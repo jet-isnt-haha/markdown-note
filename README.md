@@ -1,54 +1,81 @@
-# React + TypeScript + Vite
+# Markdown Note
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Markdown Note 是一个使用 React 和 TypeScript 构建的轻量级笔记应用程序，支持 Markdown 格式。它允许用户创建、编辑和删除笔记，并为笔记添加标签以进行分类和筛选。
 
-Currently, two official plugins are available:
+## 功能特性
+- **创建笔记**：用户可以轻松创建新的笔记，输入标题和 Markdown 格式的内容。
+- **编辑笔记**：支持对已有的笔记进行编辑，修改标题、内容和标签。
+- **删除笔记**：用户可以删除不再需要的笔记。
+- **标签管理**：为笔记添加标签，方便分类和筛选。用户可以创建、编辑和删除标签。
+- **笔记筛选**：通过标题和标签对笔记进行筛选，快速找到所需的笔记。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 技术栈
+- **前端框架**：React
+- **状态管理**：使用 `useLocalStorage` 钩子将数据存储在本地存储中。
+- **样式框架**：Bootstrap
+- **路由管理**：React Router DOM
+- **Markdown 解析**：React Markdown
+- **类型检查**：TypeScript
+- **构建工具**：Vite
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 项目结构
+```
+markdown-note/
+├── src/
+│   ├── components/
+│   │   ├── EditNote.tsx
+│   │   ├── EditTagsModal.tsx
+│   │   ├── NewNote.tsx
+│   │   ├── Note.tsx
+│   │   ├── NoteCard.tsx
+│   │   ├── NoteForm.tsx
+│   │   ├── NoteLayout.tsx
+│   │   └── NoteList.tsx
+│   ├── hooks/
+│   │   ├── useLocalStorage.ts
+│   │   └── useNote.ts
+│   ├── App.tsx
+│   └── main.tsx
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package.json
+├── pnpm-lock.yaml
+├── tsconfig.app.json
+├── tsconfig.node.json
+├── tsconfig.json
+└── vite.config.ts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+## 安装与运行
+1. **克隆仓库**
+```bash
+git clone https://github.com/jet-isnt-haha/markdown-note.git
+cd markdown-note
 ```
+2. **安装依赖**
+```bash
+pnpm install
+```
+3. **启动开发服务器**
+```bash
+pnpm dev
+```
+4. **打开浏览器**
+访问 `http://localhost:5173` 即可看到应用程序。
+
+## 构建项目
+```bash
+pnpm build
+```
+构建后的文件将生成在 `dist` 目录下。
+
+## 代码规范
+项目使用 ESLint 进行代码检查，确保代码质量和一致性。可以运行以下命令进行代码检查：
+```bash
+pnpm lint
+```
+
+
+## 许可证
+本项目采用 [MIT 许可证](LICENSE)。
