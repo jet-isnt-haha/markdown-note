@@ -77,5 +77,57 @@ pnpm lint
 ```
 
 
+## 类图说明
+
+- **App**：主应用组件，负责组织和渲染其他子组件。
+- **NoteList**：显示笔记列表，允许用户选择特定笔记进行查看或编辑。
+- **NoteEditor**：用于编辑笔记内容，包括标题、正文和标签。
+- **TagFilter**：提供标签过滤功能，帮助用户按标签筛选笔记。
+- **useLocalStorage**：自定义 Hook，用于将笔记数据存储在浏览器的本地存储中。
+- **Note**：定义笔记的数据结构，包括 ID、标题、内容和标签。
+
+```mermaid
+classDiagram
+    class App {
+        +render()
+    }
+
+    class NoteList {
+        +notes: Note[]
+        +onSelectNote(id: string): void
+    }
+
+    class NoteEditor {
+        +note: Note
+        +onSave(note: Note): void
+    }
+
+    class TagFilter {
+        +tags: string[]
+        +onFilter(tag: string): void
+    }
+
+    class useLocalStorage {
+        +getItem<T>(key: string): T
+        +setItem<T>(key: string, value: T): void
+    }
+
+    class Note {
+        +id: string
+        +title: string
+        +content: string
+        +tags: string[]
+    }
+
+    App --> NoteList
+    App --> NoteEditor
+    App --> TagFilter
+    NoteList --> Note
+    NoteEditor --> Note
+    TagFilter --> Note
+    App --> useLocalStorage
+
+```
+
 ## 许可证
 本项目采用 [MIT 许可证](LICENSE)。
